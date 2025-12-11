@@ -1,11 +1,11 @@
 
 
 import {Router} from "express"
-import AuthController from "../controllersss/AuthController.js";
 import authMiddleware from "../middleware/AuthMiddleware.js";
 import ChatGroupController from "../controller/ChatGroupController.js";
-import ChatGroupUserController from "../controllersss/ChatGroupUserController.js";
-import ChatsController from "../controllersss/ChatsController.js";
+import AuthController from "../controller/AuthController.js";
+import ChatGroupUserController from "../controller/ChatGroupUserController.js";
+import ChatController from "../controller/ChatController.js";
 const router = Router();
 //Auth Routes
 router.post('/auth/login',AuthController.login)
@@ -23,6 +23,6 @@ router.get('/chat-group-users',ChatGroupUserController.index);
 router.post('/chat-group-users',ChatGroupUserController.store);
 
 // Chat Messages
-router.get("/chats/:groupId",ChatsController.index)
+router.get("/chats/:groupId",ChatController.index)
 
 export default router;
