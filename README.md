@@ -142,4 +142,4 @@ This project is licensed under the MIT License — you’re free to use, modify,
 
  Integrate push notifications and read receipts
 
- Add Docker and CI/CD support
+ Add CI/CD support
