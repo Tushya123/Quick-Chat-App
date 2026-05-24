@@ -2,6 +2,10 @@ import prisma from "./config/db.config.js";
 import { consumer, producer } from "./config/kafka.config.js";
 
 export const produceMessage = async (topic: string, message: any) => {
+  if (!topic) {
+    throw new Error("Kafka topic is not configured");
+  }
+
   await producer.send({
     topic,
     messages: [{ value: JSON.stringify(message) }],
@@ -9,6 +13,10 @@ export const produceMessage = async (topic: string, message: any) => {
 };
 
 export const consumeMessage = async (topic: string) => {
+  if (!topic) {
+    throw new Error("Kafka topic is not configured");
+  }
+
   await consumer.connect();
   await consumer.subscribe({ topic: topic });
 

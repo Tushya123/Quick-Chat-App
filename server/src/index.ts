@@ -36,10 +36,16 @@ app.get("/", (req: Request, res: Response) => {
 });
 //* Routes
 app.use("/api", Routes);
-connectKafkaProducer().catch((err) =>
-  console.log(`Something Went Wrong While conencting Kafka...`, err)
-);
-consumeMessage(process.env.KAFKA_TOPIC).catch((err) =>
-  console.log(`Something Went Wrong while consuming Message....`, err)
-);
+connectKafkaProducer().catch((err) => {
+  console.error(
+    "Kafka producer is unavailable. Chat messages will still emit, but Kafka persistence is disabled for this server process.",
+    err
+  );
+});
+consumeMessage(process.env.KAFKA_TOPIC).catch((err) => {
+  console.error(
+    "Kafka consumer is unavailable. Chat persistence from Kafka is disabled.",
+    err
+  );
+});
 server.listen(PORT, () => console.log(`Server is running on PORT ${PORT}`));

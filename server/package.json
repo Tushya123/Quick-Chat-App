@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/index.js",
+    "start": "node dist/bootstrap.js",
     "watch": "tsc -w",
-    "server": "nodemon dist/index.js",
+    "server": "nodemon dist/bootstrap.js",
     "dev": "concurrently \"npm run watch\" \"npm run server\""
   },
   "keywords": [],

@@ -1,14 +1,7 @@
 import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
-import { cn } from "../src/lib/utils";
 import SessionProvider from "../src/providers/SessionProvider";
 import { Toaster } from "../src/components/ui/sonner";
-
-const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
 
 export const metadata: Metadata = {
   title: "Quick Chat App",
@@ -23,12 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <SessionProvider>
-        <body
-          className={cn(
-            "min-h-screen bg-background font-sans antialiased",
-            fontSans.variable
-          )}
-        >
+        <body className="min-h-screen bg-background font-sans antialiased">
           {children}
           <Toaster richColors duration={5000} />
         </body>

@@ -1,5 +1,4 @@
 import { Server,Socket } from "socket.io";
-import prisma from "./config/db.config.js";
 import { produceMessage } from "./helper.js";
 
 interface CustomSocket extends Socket {
@@ -27,7 +26,12 @@ export function setupSocket(io:Server) {
       // await prisma.chats.create({
       //   data:data
       // })
-      await produceMessage(process.env.KAFKA_TOPIC,data);
+      try {
+        await produceMessage(process.env.KAFKA_TOPIC, data);
+      } catch (err) {
+        console.error("Failed to publish chat message to Kafka:", err);
+      }
+
       socket.to(socket.room).emit("message",data)
     })
     socket.on("disconnect",()=>{

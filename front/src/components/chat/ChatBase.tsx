@@ -11,7 +11,7 @@ export default function ChatBase({
 }: {
   group: GroupChatType,
   users:Array<GroupChatUserType> | []
-  oldMessages?: Array<MessageType> | [];
+  oldMessages?: MessageType[];
 }) {
   // const socketInstance = useMemo(() => {
   //   const socket = getSocket();

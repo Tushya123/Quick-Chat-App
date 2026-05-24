@@ -2,10 +2,8 @@ import { Kafka, logLevel } from "kafkajs";
 
 export const kafka = new Kafka({
   clientId: "chat-app",
-  brokers: [process.env.KAFKA_BROKER], // or process.env.KAFKA_BROKER || "localhost:9092"
+  brokers: [process.env.KAFKA_BROKER || "localhost:9092"],
   logLevel: logLevel.ERROR,
-  // no ssl
-  // no sasl
 });
 
 export const producer = kafka.producer();

@@ -8,11 +8,11 @@ export default function Chats({
   chatUser,
 }: {
   group: GroupChatType;
-  oldMessages?: Array<MessageType> | [];
+  oldMessages?: MessageType[];
   chatUser?: GroupChatUserType;
 }) {
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState<Array<MessageType>>(oldMessages);
+  const [messages, setMessages] = useState<MessageType[]>(oldMessages ?? []);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
